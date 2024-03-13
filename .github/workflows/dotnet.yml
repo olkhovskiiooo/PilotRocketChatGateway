@@ -3,7 +3,7 @@ env:
  SOLUTION: "PilotRocketChatGateway.sln"
  RELESE_FOLDER: ${{ github.workspace }}\upload
  APP: "PilotRocketChatGateway"
- APP_RELEASE: "PilotRocketChatGateway_linux"
+ APP_RELEASE: "PilotRocketChatGateway"
  
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
            nuget restore ${{ env.SOLUTION }}
            nuget restore ${{ env.INSTALLER_SOLUTION }}
     - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
+      uses: microsoft/setup-msbuild@v1.0.3
     - name: Build with MSBuild 
       run: msbuild ${{ env.SOLUTION }} -p:Configuration=Release
     - name: Get current date
@@ -33,16 +33,6 @@ jobs:
       run: |
        mkdir ${{ env.RELESE_FOLDER }}
        move ${{ github.workspace }}\${{ env.APP }}\bin\Release ${{ env.RELESE_FOLDER }}\${{ env.APP_RELEASE }}
-	   
-	- name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.301
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build 2
-      run: dotnet build --configuration Release --no-restore
-	  
     - name: Zip binaries
       run: |
           cd ${{ env.RELESE_FOLDER }}
