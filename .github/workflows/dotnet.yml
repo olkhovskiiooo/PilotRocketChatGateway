@@ -12,18 +12,20 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.0
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore	  
+    - uses: actions/checkout@v1
+    - name: Setup Nuget.exe
+      uses: nuget/setup-nuget@v1
+    - name: Restore packages
+      run: |
+           nuget restore ${{ env.SOLUTION }}
+           nuget restore ${{ env.INSTALLER_SOLUTION }}
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.3
+    - name: Build with MSBuild 
+      run: msbuild ${{ env.SOLUTION }} -p:Configuration=Release
     - name: Get current date
       id: date
       run: echo "::set-output name=date::$(date +'%d.%m.%y')" 
