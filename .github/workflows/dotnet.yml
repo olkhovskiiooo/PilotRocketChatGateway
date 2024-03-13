@@ -23,8 +23,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-	  
+      run: dotnet build --configuration Release --no-restore	  
     - name: Get current date
       id: date
       run: echo "::set-output name=date::$(date +'%d.%m.%y')" 
