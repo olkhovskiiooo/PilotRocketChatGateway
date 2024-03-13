@@ -31,8 +31,8 @@ jobs:
     - name: Prepare files to release
       run: |
         mkdir ${{ env.RELESE_FOLDER }}
-        move ${{ github.workspace }}\${{ env.APP_NAME }}\bin\Release\net6.0\linux-x64\publish ${{ env.RELESE_FOLDER }}\${{ env.APP_NAME }}\linux-x64
-        move ${{ github.workspace }}\${{ env.APP_NAME }}\bin\Release\net6.0\win-x64\publish ${{ env.RELESE_FOLDER }}\${{ env.APP_NAME }}\win-x64
+        move ${{ github.workspace }}\${{ env.APP_NAME }}\bin\Release\net6.0\linux-x64\publish ${{ env.RELESE_FOLDER }}\linux-x64
+        move ${{ github.workspace }}\${{ env.APP_NAME }}\bin\Release\net6.0\win-x64\publish ${{ env.RELESE_FOLDER }}\win-x64
     - name: Zip binaries
       run: |
           cd ${{ env.RELESE_FOLDER }}
