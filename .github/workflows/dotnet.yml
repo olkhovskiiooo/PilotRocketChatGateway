@@ -25,7 +25,7 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v1.0.3
     - name: Build with MSBuild 
-      run: msbuild ${{ env.SOLUTION }} -p:Configuration=Release
+      run: msbuild ${{ env.SOLUTION }} -p:Configuration=Release -p:RuntimeIdentifier=linux-x64
     - name: Get current date
       id: date
       run: echo "::set-output name=date::$(date +'%d.%m.%y')" 
