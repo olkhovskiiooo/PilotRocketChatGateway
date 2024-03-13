@@ -24,4 +24,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: PilotRocketChatGateway_linux-x64-${{ steps.gitversion.outputs.fullSemVer }}
-        path: ${{ env.APP }}\bin\Release\net6.0\linux-x64\
+        path: ${{ github.workspace }}\PilotRocketChatGateway\bin\Release\net6.0\linux-x64\
