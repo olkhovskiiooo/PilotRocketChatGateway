@@ -23,5 +23,5 @@ jobs:
     - name: Upload Linux artifact
       uses: actions/upload-artifact@v2
       with:
-        name: pilot-web_linux-${{ steps.gitversion.outputs.fullSemVer }}
-        path: \PilotRocketChatGateway\PilotRocketChatGateway\bin\Release\net6.0\linux-x64\
+        name: PilotRocketChatGateway_linux-x64-${{ steps.gitversion.outputs.fullSemVer }}
+        path: ${{ env.APP }}\bin\Release\net6.0\linux-x64\
