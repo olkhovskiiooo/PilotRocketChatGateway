@@ -24,8 +24,6 @@ jobs:
            nuget restore ${{ env.INSTALLER_SOLUTION }}
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
-	  with:
-		msbuild-architecture: x64
     - name: Build with MSBuild 
       run: msbuild ${{ env.SOLUTION }} -p:Configuration=Release
     - name: Get current date
